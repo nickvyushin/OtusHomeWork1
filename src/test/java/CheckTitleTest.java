@@ -3,6 +3,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -15,25 +16,27 @@ public class CheckTitleTest {
     ServerConfig cfg = ConfigFactory.create(ServerConfig.class);
 
     @Before
-    public void StartTests() {
+    public void startTests() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         logger.info("Browser opened");
     }
 
     @After
-    public void EndTests() {
+    public void endTests() {
         if (driver != null)
             driver.quit();
         logger.info("Browser closed");
     }
 
     @Test
-    public void TestCheckTitle() {
+    public void testCheckTitle() {
         driver.get(cfg.hostname());
         logger.info("Page opened");
         var title = driver.getTitle();
-        logger.info("Получен title: " + title);
+        logger.info("Получен title: {}" + title);
+        Assert.assertEquals(title, "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям");
+
 
     }
 }
