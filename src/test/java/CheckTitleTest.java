@@ -35,7 +35,7 @@ public class CheckTitleTest {
         logger.info("Page opened");
         var title = driver.getTitle();
         logger.info("Получен title: {" + title + "}");
-        Assert.assertEquals(title, "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям");
+        Assert.assertEquals("Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям", title);
 
 
     }
